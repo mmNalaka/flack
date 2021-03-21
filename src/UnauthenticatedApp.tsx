@@ -1,5 +1,7 @@
 import React from 'react'
 
-export const UnauthenticatedApp = () => {
+const UnauthenticatedApp = () => {
   return <div>unauthenticated</div>
 }
+
+export default UnauthenticatedApp
