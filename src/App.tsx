@@ -1,16 +1,18 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
-import { authSelector } from './features/auth/auth.slice'
+import { RootState } from './store/root-reducer'
 
 const AuthenticatedApp = React.lazy(() => import('./AuthenticatedApp'))
 const UnAuthenticatedApp = React.lazy(() => import('./UnauthenticatedApp'))
 
 export const App = () => {
-  const { isAuthenticated } = useSelector(authSelector)
+  const { isLoaded, isEmpty } = useSelector(
+    (state: RootState) => state.firebase.auth,
+  )
 
   return (
     <React.Suspense fallback={<div>loading</div>}>
-      {isAuthenticated ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
+      {isLoaded && !isEmpty ? <AuthenticatedApp /> : <UnAuthenticatedApp />}
     </React.Suspense>
   )
 }

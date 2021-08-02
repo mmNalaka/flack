@@ -1,6 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit'
 
-import { AppThunk } from '../../store/index'
 import { RootState } from '../../store/root-reducer'
 
 export type AuthError = {
